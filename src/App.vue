@@ -111,40 +111,43 @@ function esApta(pelicula, edadUsuario) {
 </script>
 
 <template>
-  <VApp class="d-flex flex-row justify-center align-center">
-    <div class="d-flex flex-column justify-center" style="max-width: 1280px">
-      <HeaderComponent
-        class="mb-7 mt-7"
-        :cantidadFavoritos="computadaFavoritos"
-        :favoritos="favoritos"
-      />
+  <VApp>
+    <div class="centrador">
+      <div class="contenedor-principal">
+        <HeaderComponent
+          class="mb-7 mt-7"
+          :cantidadFavoritos="computadaFavoritos"
+          :favoritos="favoritos"
+        />
 
-      <!-- Tarjetas -->
-      <VMain>
-        <section class="contenedor d-flex flex-wrap ga-3 justify-center pa-3">
-          <div v-for="pelicula in peliculas" :key="pelicula.id">
-            <MovieCard
-              v-if="esApta(pelicula, edad)"
-              :peli="pelicula"
-              :esFavorita="
-                favoritos.some((favorita) => favorita.id === pelicula.id)
-              "
-              @add-to-favourites="agregarAFavoritos"
-            />
-          </div>
-        </section>
-      </VMain>
+        <VMain>
+          <section class="contenedor d-flex flex-wrap ga-3 justify-center pa-3">
+            <div v-for="pelicula in peliculas" :key="pelicula.id">
+              <MovieCard
+                v-if="esApta(pelicula, edad)"
+                :peli="pelicula"
+                :esFavorita="favoritos.some((favorita) => favorita.nombre === pelicula.nombre)"
+                @add-to-favourites="agregarAFavoritos"
+              />
+            </div>
+          </section>
+        </VMain>
+      </div>
     </div>
   </VApp>
 </template>
 
-<style scoped>
-/* .contenedor {
+<style>
+/* Centramos solo el contenedor */
+.centrador {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
   justify-content: center;
-  background-color: #242424;
-} */
+  padding: 24px;
+}
+
+/* Limitamos el ancho del contenido */
+.contenedor-principal {
+  max-width: 1280px;
+  width: 100%;
+}
 </style>
