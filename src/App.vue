@@ -34,7 +34,7 @@ const peliculas = ref([
     calificacionPorEdad: "PG-13", // Para mayores de 13 años
     sinopsis:
       "Un grupo de amigos descubre secretos antiguos en un faro abandonado",
-    id: crypto.randomUUID(),
+    id: "001",
   },
   {
     portada:
@@ -43,7 +43,7 @@ const peliculas = ref([
     calificacionPorEdad: "G", // Apta para todo público
     sinopsis:
       "Una expedición espacial llena de emocionantes descubrimientos y una inesperada amistad entre especies galácticas",
-    id: crypto.randomUUID(),
+    id: "002",
   },
   {
     portada:
@@ -52,7 +52,7 @@ const peliculas = ref([
     calificacionPorEdad: "R", // Restringida (Solo para mayores de 17 con acompañante)
     sinopsis:
       "En un Japón feudal, un samurái busca justicia mientras enfrenta sus propios demonios y una guerra inminente",
-    id: crypto.randomUUID(),
+    id: "003",
   },
   {
     portada:
@@ -61,7 +61,7 @@ const peliculas = ref([
     calificacionPorEdad: "PG", // Sugiere orientación parental
     sinopsis:
       "Una historia entrañable sobre amistad, primeros amores y los sueños que marcan el verano de la juventud",
-    id: crypto.randomUUID(),
+    id: "004",
   },
   {
     portada:
@@ -70,7 +70,7 @@ const peliculas = ref([
     calificacionPorEdad: "PG-13",
     sinopsis:
       "Viajes temporales y misterios se entrelazan en esta aventura donde el pasado y futuro dependen de un héroe inesperado",
-    id: crypto.randomUUID(),
+    id: "005",
   },
   {
     portada:
@@ -79,7 +79,7 @@ const peliculas = ref([
     calificacionPorEdad: "G",
     sinopsis:
       "En un mundo mágico, un joven aprendiz debe dominar su último hechizo para salvar a su pueblo de la oscuridad",
-    id: crypto.randomUUID(),
+    id: "006",
   },
   {
     portada:
@@ -88,7 +88,7 @@ const peliculas = ref([
     calificacionPorEdad: "R",
     sinopsis:
       "Un thriller psicológico donde secretos oscuros salen a la luz durante una noche que cambiará todo para sus protagonistas",
-    id: crypto.randomUUID(),
+    id: "007",
   },
 ]);
 
@@ -126,7 +126,7 @@ function esApta(pelicula, edadUsuario) {
               <MovieCard
                 v-if="esApta(pelicula, edad)"
                 :peli="pelicula"
-                :esFavorita="favoritos.some((favorita) => favorita.nombre === pelicula.nombre)"
+                :esFavorita="favoritos.some((f) => f.id === pelicula.id)"
                 @add-to-favourites="agregarAFavoritos"
               />
             </div>
