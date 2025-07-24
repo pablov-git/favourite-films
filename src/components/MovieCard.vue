@@ -67,7 +67,7 @@ function cambiarFavorito() {
         contain
         class="mb-2 mx-auto"
       />
-      <p>Clasificación: {{ peli.calificacionPorEdad }}</p>
+      <p class="text-center">Clasificación: {{ peli.calificacionPorEdad }}</p>
     </v-card-text>
 
     <v-card-actions class="justify-center">
