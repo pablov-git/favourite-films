@@ -12,6 +12,12 @@ const props = defineProps({
 const tema = useTheme();
 
 const esTemaOscuro = computed(() => tema.global.name.value === "dark");
+
+const emit = defineEmits(["eliminarFavoritos"]);
+
+function borrarFavoritos() {
+  emit("eliminarFavoritos");
+}
 </script>
 
 <template>
@@ -36,7 +42,7 @@ const esTemaOscuro = computed(() => tema.global.name.value === "dark");
     temporary
     location="right"
     width="350"
-    color="#242424"
+    :class="esTemaOscuro ? 'bg-dark' : 'bg-light'"
   >
     <v-list>
       <v-list-item class="px-4 py-3">
@@ -55,6 +61,21 @@ const esTemaOscuro = computed(() => tema.global.name.value === "dark");
       >
         <v-list-item-title>{{ favorite.nombre }}</v-list-item-title>
       </v-list-item>
+
+      <v-list-item class="mt-4">
+        <v-btn block color="red-darken-2" @click="borrarFavoritos">
+          Eliminar todos los favoritos
+        </v-btn>
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
+
+<style scoped>
+  .bg-dark {
+    background-color: #242424;
+  }
+  .bg-light {
+    background-color: #fefae0;
+  }
+</style>

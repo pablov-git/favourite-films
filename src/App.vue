@@ -26,6 +26,11 @@ function agregarAFavoritos(objeto) {
   localStorage.setItem("favoritos", JSON.stringify(favoritos.value));
 }
 
+function eliminarTodosLosFavoritos() {
+  favoritos.value = [];
+  localStorage.removeItem("favoritos");
+}
+
 const peliculas = ref([
   {
     portada:
@@ -118,6 +123,7 @@ function esApta(pelicula, edadUsuario) {
           class="mb-7 mt-7"
           :cantidadFavoritos="computadaFavoritos"
           :favoritos="favoritos"
+          @eliminarFavoritos="eliminarTodosLosFavoritos"
         />
 
         <VMain>

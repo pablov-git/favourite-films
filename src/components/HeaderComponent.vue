@@ -28,6 +28,12 @@ function cambiarTema() {
 
   localStorage.setItem("tema", tema.global.name.value);
 }
+
+const emit = defineEmits(["eliminarFavoritos"]);
+
+function reenviarEliminacion() {
+  emit("eliminarFavoritos");
+}
 </script>
 
 <template>
@@ -53,6 +59,7 @@ function cambiarTema() {
       <FavouriteComponent
         :cantidad="cantidadFavoritos"
         :favoritos="favoritos"
+        @eliminarFavoritos="reenviarEliminacion"
       />
     </div>
   </header>
